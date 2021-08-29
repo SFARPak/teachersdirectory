@@ -42,6 +42,6 @@ Run the local server:
 ### Registration Page
 ![Login Page](https://github.com/SFARPak/teachersdirectory/blob/main/Registration.PNG)
 
-### Taost Notifications
-![Taost Notifications](https://github.com/SFARPak/teachersdirectory/blob/main/ToastNotifications.png)
+### Toast Notifications
+![Toast Notifications](https://github.com/SFARPak/teachersdirectory/blob/main/ToastNotifications.png)
 
