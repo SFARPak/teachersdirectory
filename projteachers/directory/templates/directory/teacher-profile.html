@@ -1,0 +1,66 @@
+{% extends 'directory/layouts/default.html' %}
+
+{% load static %}
+
+{% block title %} Teacher Directory {% endblock %}
+
+{% block content %}
+
+<body>
+<div class="d-flex justify-content-center">
+<section class="">
+    
+
+</section>
+
+<div class="m-8 p-8 shadow-lg">
+
+    <div class="flex-auto p-32 m-8 shadow-xl rounded-tr-3xl rounded-bl-3xl bg-gradient-to-b from-gray-400 to-gray-100">
+
+        <h2 class="font-sans text-9xl text-center text-white">Teacher Directory</h2>
+
+    </div>
+<br>
+
+      <div class="flex-auto p-8 m-8 shadow-lg shadow-xl opacity-75 rounded-tl-3xl rounded-br-3xl bg-gradient-to-b from-gray-100 to-gray-400">
+
+        <div class="py-8">
+        <a href="/"><div class="ui primary labeled icon button">
+          <i class="home icon"></i> Home
+          </div></a>
+
+          <a href="/teacher-add/"><div class="ui primary labeled icon button">
+            <i class="user icon"></i> Add Teacher
+          </div></a>
+        </div>
+              <div class="ui link cards">
+                <div class="card">
+                  <div class="image">
+                    <img src="/images/avatar2/large/matthew.png">
+                  </div>
+                  <div class="content">
+                    <div class="header">{{ teacher.first_name }} {{ teacher.last_name }}</div>
+                    
+                    <div class="description">
+                      Matthew is an interior designer living in New York.
+                    </div>
+                  </div>
+                  <div class="extra content">
+                    <span class="right floated">
+                      Joined ___
+                    </span>
+                    
+                  </div>
+                </div>
+              </div>
+
+      </div>
+
+    </div>
+</div>
+ 
+
+</body>
+
+
+{% endblock %}

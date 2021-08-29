@@ -1,0 +1,73 @@
+{% extends 'directory/layouts/default.html' %}
+
+{% load static %}
+
+{% block title %} Teacher Directory {% endblock %}
+
+{% block content %}
+
+<body>
+<div class="d-flex justify-content-center">
+<section class="">
+    
+
+</section>
+
+<div class="m-8 p-8 shadow-lg">
+
+    <div class="flex-auto p-32 m-8 shadow-xl rounded-tr-3xl rounded-bl-3xl bg-gradient-to-b from-gray-400 to-gray-100">
+
+        <h2 class="font-sans text-9xl text-center text-white">Teacher Directory</h2>
+
+    </div>
+<br>
+
+<div class="flex-auto p-8 m-8 shadow-lg shadow-xl opacity-75 rounded-tl-3xl rounded-br-3xl bg-gradient-to-b from-gray-100 to-gray-400">
+
+    <div class="m-4">
+    <form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+        <p class="m-4">Please upload CSV files only.</p>
+        <div class="m-4">
+        <label>Upload CSV file:</label>
+            <input type="file" name="file">
+            
+            <div class="py-4">
+            <button class="ui primary labeled icon button" type="submit"><i class="upload icon"></i>Upload</button> 
+            
+            <a href="/"><div class="ui primary labeled icon button">
+                <i class="home icon"></i> Home
+                </div></a>
+            </div>
+    </form>
+
+    </div>
+
+    <div class="flex justify-center">
+    {% if messages %}
+        {% for message in messages %}
+            
+            <div class="notification is-success is-toast m-8">
+                <div class="bg-gray-900 text-center py-4 lg:px-4">
+                    <div class="p-2 bg-gray-800 items-center text-gray-100 leading-none lg:rounded-full flex lg:inline-flex" role="alert">
+                        <span class="flex rounded-full bg-gray-500 uppercase px-2 py-1 text-xs font-bold mr-3">Success</span>
+                        <span class="font-semibold mr-2 text-left flex-auto">{{message}}</span>
+                        <span class="font-semibold mr-2 text-left flex-auto">{{form.errors}}</span>
+                        <svg class="fill-current opacity-75 h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M12.95 10.707l.707-.707L8 4.343 6.586 5.757 10.828 10l-4.242 4.243L8 15.657l4.95-4.95z"/></svg>
+                    </div>
+                </div>
+            </div>
+
+        {% endfor %}
+    {% endif %}
+    </div>
+
+</div>
+
+</div>
+
+
+</body>
+
+
+{% endblock %}

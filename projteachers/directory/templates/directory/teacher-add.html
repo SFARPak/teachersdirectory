@@ -1,0 +1,138 @@
+{% extends 'directory/layouts/default.html' %}
+
+{% load static %}
+
+{% block title %} Teacher Directory {% endblock %}
+
+{% block content %}
+
+<body>
+
+  <div class="m-8 p-8 shadow-lg">
+    <div class="flex-auto p-32 m-8 shadow-xl rounded-tr-3xl rounded-bl-3xl bg-gradient-to-b from-gray-400 to-gray-100t">
+      <h2 class="font-sans text-9xl text-center text-white">Teacher Directory</h2>
+    </div>
+    
+    <br>
+    
+    <div class="flex-auto p-8 m-8 shadow-lg shadow-xl opacity-75 rounded-tl-3xl rounded-br-3xl bg-gradient-to-b from-gray-100 to-gray-400">
+        <div class="ui large icon input">
+        <input class="form-control" id="myInput" type="text" placeholder="Search ...">
+        <i class="search icon"></i>
+        </div>
+        
+        <a href="/bulk-upload/"><div class="ui primary right floated labeled icon button">
+          <i class="upload icon"></i> Bulk Import
+        </div></a>
+
+        <a href="/"><div class="ui primary right floated labeled icon button">
+          <i class="user icon"></i> Home
+        </div></a>
+        
+      <table class="ui compact celled violet table">
+        <thead>
+        <tr>
+        <th>Profile Picture</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>E-mail address</th>
+        <th>Phone Number</th>
+        <th>Room Number</th>
+        <th>Subjects Taught</th>
+        </tr>
+        </thead>
+
+        <tbody id="myTable">
+        {% for item in teacher_list %}
+          <tr class="font-sans font-medium hover:text-blue-500">
+          <td>
+            {% if item.image %}
+              <a href="{{ item.get_absolute_url }}">
+                <img class="ui centered rounded tiny image" src="{{ item.image.url }}" alt="profile">
+              {% else %}
+                <img class="ui centered rounded tiny image" src="{% static '/images/teachers/21167.JPG' %}" alt="">
+            {% endif %}
+            </a>
+          </td>
+          <td> {{item.first_name}} </td>
+          <td> {{item.last_name}} </td>
+          <td> {{item.email}} </td>
+          <td> {{item.phone}} </td>
+          <td> {{item.room_no}} </td>
+          <td> {{item.subject}} </td>
+          </tr>
+        {% endfor %}
+
+        <form method="POST" action='.' enctype="multipart/form-data">
+            {% csrf_token %}
+
+              <tr>
+                <td> {{ form.image }} </td>
+                <td> {{ form.first_name }} </td>
+                <td> {{ form.last_name }} </td>
+                <td> {{ form.email }} </td>
+                <td> {{ form.phone }} </td>
+                <td> {{ form.room_no }} </td>
+                <td> {{ form.subject }} </td>
+              </tr>
+              
+
+        </tbody>
+        <tfoot class="full-width">
+          <tr>
+            <th></th>
+            <th colspan="7">
+              
+              <button type="submit" class="ui right floated small primary labeled icon button">
+                  <i class="icon user"></i>
+                  Add Teacher
+                </button>
+
+        
+            </th>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+    </form>
+
+     <div class="flex justify-center">
+      {% if messages %}
+          {% for message in messages %}
+              
+              <div class="notification is-success is-toast m-8">
+                  <div class="bg-gray-900 text-center py-4 lg:px-4">
+                      <div class="p-2 bg-gray-800 items-center text-gray-100 leading-none lg:rounded-full flex lg:inline-flex" role="alert">
+                          <span class="flex rounded-full bg-gray-500 uppercase px-2 py-1 text-xs font-bold mr-3">Success</span>
+                          <span class="font-semibold mr-2 text-left flex-auto">{{message}}</span>
+                          <span class="font-semibold mr-2 text-left flex-auto">{{form.errors}}</span>
+                          <svg class="fill-current opacity-75 h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M12.95 10.707l.707-.707L8 4.343 6.586 5.757 10.828 10l-4.242 4.243L8 15.657l4.95-4.95z"/></svg>
+                      </div>
+                  </div>
+              </div>
+
+          {% endfor %}
+      {% endif %}
+
+      </div>
+
+
+
+    </div>
+  </div>
+
+  <script>
+    $(document).ready(function(){
+      $("#myInput").on("keyup", function() {
+        var value = $(this).val().toLowerCase();
+          $("#myTable tr").filter(function() {
+            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+          });
+      });
+    });
+  </script>
+
+</body>
+
+
+{% endblock %}

@@ -1,0 +1,49 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>{{ title }} | Teachers Directory</title>
+  <!-- ... -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+  <link rel="stylesheet" href="{% static 'semantic/semantic.css' %}">
+  <script src="{% static 'semantic/semantic.js' %}"></script>
+
+  <link rel="stylesheet" type="text/css" id="applicationStylesheet" href="{% static 'tailwind/tailwind.min.css' %}"/>
+
+  <style>
+
+    @keyframes show-toast {
+      0%   {top: -100%;}
+      20%  {top: 0px;}
+      80%  {top: 0px;}
+      100% {top: -100%;}
+    }
+    
+    .notification.is-toast {
+      position: fixed;
+      top: 100%;
+      animation-name: show-toast;
+      animation-duration: 5s;
+    }
+    
+  </style>
+  
+</head>
+
+{% block content %}
+
+
+
+
+
+
+{% endblock %}
+
+
+
+
+</html>

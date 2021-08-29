@@ -1,0 +1,30 @@
+{% extends 'directory/layouts/default.html' %}
+
+{% load static %}
+
+{% block title %} {{title}} {% endblock %}
+
+{% block content %}
+
+
+
+<body>
+
+<form method="POST">
+    {% csrf_token %}
+    
+    <select class="form-select" multiple aria-label="multiple select example">
+      <option selected>Open this select menu</option>
+      <option value="1">One</option>
+      <option value="2">Two</option>
+      <option value="3">Three</option>
+    </select>
+
+    <br>
+    <input type="submit" value="Submit">
+</form>
+
+</body>
+
+
+{% endblock %}
